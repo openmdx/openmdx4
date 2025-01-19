@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="ltr">
+<head>
+  <title>Features based on ActiveX Control</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link href="_style/colors.css" rel="stylesheet" type="text/css">
+  <link href="_style/n2default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body onLoad="javascript:window.resizeTo(document.body.scrollWidth, document.body.scrollHeight); window.resizeBy(50, 50);">
+<table class="objectTitle">
+<tr>
+  <td>ActiveX</td>
+  <td align="right">
+	<script>
+	  <!--
+	  document.write('<a href="" class="backButton" title="Close" onClick="javascript:window.close();">X</a>');
+	  -->
+	</script>
+  </td>
+</tr>
+</table>
+<p>Использование особенностей, основанных на средствах управления ActiveX, требует чтобы<br />
+<ul>
+  <li>ваш броузер был <strong>способен обрабатывать ActiveX элементы управления</strong> (например, Internet Explorer для MS Windows) и</li>
+  <li>настройки безопасности <strong>разрешали загрузку/выполнение ActiveX</strong></p></li>
+</ul>
+<p>В зависимости от используемых возможностей, может потребоваться ПО сторонних фирм:</p>
+<table class="browserHints">
+  <tbody>
+  <tr>
+    <td><b>Возможность</b></td>
+	<td><b>Требование</b></td>
+  <td><strong>Дополнительные подсказки</strong></td>
+  </tr>
+  <tr>
+    <td>MS Word XML Merge</td>
+    <td>установленный на клиенте MS Word 2000 или более новый</td>
+  <td><a href="#trustedsites">Надежные узлы</a>, <a href="#activexsettings">Разрешения ActiveX</a></td>
+  </tr>
+  <tr>
+    <td>MS Excel XML Merge </td>
+    <td>установленный на клиенте MS Excel 2000 или более новый</td>
+  <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>XML Export to MS Outlook</td>
+    <td>установленный на клиенте MS Outlook 2000 или более новый</td>
+  <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>XML Import from MS Outlook</td>
+    <td>установленный на клиенте MS Outlook 2000 или более новый</td>
+  <td>&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
+<a name="trustedsites"></a><p class="hh1">Надежные узлы (Internet Explorer)</p>
+<p>По соображениям безопасности мы не рекомендуем, чтобы Вы разрешили элементы управления ActiveX для <strong>Internet Zone</strong>. Лучше добавить сайт с установленным openCRX сервером в <strong>зону надежных узлов</strong> или Вашу <strong>Местную интрасеть</strong> (только если ваш сайт действительно в зоне местной интрасети) и тогда <a href="#activexsettings">разрешить элементы управления ActiveX</a> для этой зоны. Ниже пример добавления openCRX демонстрационного сервера (<strong><font color="#FF0000">demo.opencrx.org</font></strong>) в вашу зону надежных узлов и добавления openCRX сервера(<strong><font color="#FF0000">10.1.1.20</font></strong>) в зону местной интрасети.</p>
+<p><img src="images/ie_trusted_sites.png" width="384" height="342"> <img src="images/ie_local_intranet_zone.png" width="384" height="342"></p>
+<a name="activexsettings"></a>
+<p class="hh1">Разрешения ActiveX (Internet Explorer)</p>
+<p>По соображениям безопасности мы не рекомендуем, чтобы Вы разрешили элементы управления ActiveX для <strong>Internet Zone</strong>. Лучше добавить сайт с установленным openCRX сервером в <strong><a href="#trustedsites">зону надежных узлов</a></strong> или Вашу <strong><a href="#trustedsites">Местную интрасеть</a></strong> (только если ваш сайт действительно в зоне местной интрасети) и разрешить элементы управления ActiveX для этой зоны:</p>
+<p class="hh1">Где найти настройки безопасности ActiveX:</p>
+
+<table class="activeXHints">
+  <tr>
+    <td><b>Платформа</b></td>
+    <td colSpan=2><b>Броузер</b> &amp; <b>версия</b></td>
+    <td><b>Найти настройки ActiveX в ...</b></td>
+    <td><strong>ActiveX разрешены (со всплывающими предупреждениями)</strong></td>
+    <td><strong>ActiveX разрешены (без всплывающих предупреждений)</strong></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img height=38 src="images/icon-windows.gif" width=38 /><br />
+	  <strong>Microsoft<br />
+	  Windows</strong>	</td>
+    <td align="center">
+	  <img height=38 src="images/icon-ie.gif" width=38><br />
+	  <FONT size=-1>Internet<br />Explorer</FONT>
+	</td>
+    <td>6.x</td>
+    <td>Tools &gt; Internet Options &gt; Security ...<br />
+      ... Custom Levels &gt; ActiveX controls and plug-ins</td>
+    <td><img src="images/ie_activex_settings_secure.png" width="352" height="666"></td>
+    <td><img src="images/ie_activex_settings_convenient.png" width="352" height="666"></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	      version="2.5">
+	<display-name>JUnit Servlet Web Component</display-name>
+	<description>A handy package for the servlet, JUnit itself, and a nice UI.</description>
+	<servlet>
+		<servlet-name>TestRunnerServlet</servlet-name>
+		<display-name>TestRunnerServlet</display-name>
+		<servlet-class>junit.servletui.TestRunnerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestRunnerServlet</servlet-name>
+		<url-pattern>/TestRunnerServlet</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

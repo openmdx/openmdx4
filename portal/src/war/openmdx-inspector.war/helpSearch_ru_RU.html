@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="ltr">
+<head>
+  <title>openCRX - усовершенствованный поиск</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link href="_style/colors.css" rel="stylesheet" type="text/css">
+  <link href="_style/n2default.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body onload="javascript:window.resizeTo(document.body.scrollWidth, document.body.scrollHeight); window.resizeBy(0, 70);">
+<table class="objectTitle">
+  <tr>
+    <td>Усовершенствованный поиск</td>
+	<td>
+		<script>
+		  <!--
+		  document.write('<td align="right"><a href="" class="backButton" title="Close" onClick="javascript:window.close();">X</a>');
+		  -->
+		</script>
+	</td>
+  </tr>
+</table>
+
+ <div class="hh2">Усовершенствованный поиск стал легче</div>
+ <div class="normal">Вы можете увеличить точность своих поисковых запросов, добавляя
+     операторы, которые уточняют запросы с ключевыми словами и числами. Все опции
+     перечисленные на этой странице могут быть введены непосредственно в окно поиска.</div>
+ <div class="hh2">Основы</div> 
+ <div class="normal">Вы можете ввести слово/число или выражение, например, <strong>'Miller'</strong>, <strong>'> 500'</strong> или <strong>'>=
+   Smith'</strong>, после чего</div>
+ <table cellpadding="0" cellspacing="10">
+   <tr valign="top">
+     <td>&#8226; кликнуть по <strong>заголовку колонки</strong> для поиска объектов
+       соответствующих значениям этого атрибута (<strong>все объекты</strong> ищутся 
+       независимо от установленного текущего набора фильтров и существующие результаты поиска будут потеряны)</td>
+	 <td bgcolor="#CCCCCC"><strong>New Search</strong><br />
+	 <img src="images/helpSearchTut0.gif" width="129" height="51" /></td>
+   </tr>
+   <tr valign="top">
+     <td>&#8226; кликнуть по <strong>кнопке [+]</strong> для поиска объектов
+       соответствующих значениям этого атрибута (<strong>только объекты, содержащиеся в результатах
+       предыдущего поиска в соответствии с набором фильтров</strong> будут найдены,
+       например, 'добавление' этого поиска вернет более ограниченный набор результатов)</td>
+	 <td bgcolor="#CCCCCC"><strong>Добавить условие</strong><br />
+	 <img src="images/helpSearchTut1.gif" width="129" height="51" /></td>
+   </tr>
+</table>
+ <div class="hh2">Операторы</div>
+ <div class="normal">Поддерживаются следующие операторы (заметим, однако, что не все базы данных поддерживают все операторы):</div>
+ <ul>
+ <li>похож [sounds like] (<strong>*</strong>)</li>
+ <li>подобен [like] (<strong>%</strong>), оператор по умолчанию для строковых запросов</li>
+ <li>равен [equal] (<strong>=</strong>), оператор по умолчанию для boolean, number, и code
+   запросов</li>
+ <li>не равен [not equal] (<strong><></strong>, <strong>!</strong>=)</li>
+ <li>меньше (<strong><</strong>)</li>
+ <li>меньше или равен (<strong><=</strong>)</li>
+ <li>больше (<strong>></strong>)</li>
+ <li>больше или равен <strong>(>=</strong>)</li>
+ </ul>
+ <div class="hh2">&quot;AND&quot; запросы</div>
+ <div class="normal">чтобы найти объекты, которые соответствуют больше чем одному условию одновременно,
+   используйте амперсанд &quot;<strong>&amp;</strong>&quot; между условиями. Например, чтобы найти объекты
+   со значениями между 500 и 1000 (т.е. больше чем 500 и меньше 1000), просто наберите: <strong>'&gt;500 &amp; &lt;1000'</strong></div>
+ <div class="hh2">&quot;OR&quot; запросы</div>
+ <div class="normal">Чтобы найти  объекты, которые включают
+       или слово A или слово B, используйте точку с запятой &quot;<strong>;</strong>&quot; между значениями. Например,
+     чтобы найти контакты с именами 'Smith' ИЛИ 'Miller', просто наберите: <strong>'= Smith; Miller'</strong></div>
+ <div class="hh2">Сложные запросы</div>
+ <div class="normal">Вы можете объединить запросы фактически без ограничений. Например, чтобы найти
+   объекты со значениями меньше чем '1000', но отличающиеся от '500' и от '600',
+   просто наберите: <strong>'&lt;&gt;500; 600 &amp; &lt;1000'</strong></div>
+ <div class="normal">Правила синтаксического анализа для сложных запросов следующие:</div>
+ <ul>
+   <li>searchExpr ::= filterValue { & filterValue }<br />
+   (--> разбивщик строк с <strong>&</strong> как разделителем)</li>
+   <li>filterValue ::= [operator] value { ; value }<br />
+   (--> разбивщик строк с <strong>;</strong> как разделителем)</li>
+ </ul>
+ <div class="hh2">Поиск по маске</div>
+ <div class="normal">
+   <p>Ряд баз данных допускают поиск по маске. В этом случае, Вы можете выполнять поиск по всем контактам с именами, содержащими 'ller' (например, Miller, Mueller, и т.д.) набрав: <strong>'%%ller'<br />
+   ВНИМАНИЕ:</strong> поиск по маске может потребовать много времени, если БД специально не оптимизирована (потребуется полный перебор таблицы)! </p>
+ </div>
+</body>
+</html>

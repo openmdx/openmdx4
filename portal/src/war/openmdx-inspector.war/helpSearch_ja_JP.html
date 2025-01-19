@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="ltr">
+<head>
+  <title>openCRX - 詳細検索</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link href="_style/colors.css" rel="stylesheet" type="text/css">
+  <link href="_style/n2default.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body onload="javascript:window.resizeTo(document.body.scrollWidth, document.body.scrollHeight); window.resizeBy(0, 70);">
+<table class="objectTitle">
+  <tr>
+    <td>詳細検索</td>
+	<td>
+		<script>
+		  <!--
+		  document.write('<td align="right"><a href="" class="backButton" title="Close" onClick="javascript:window.close();">X</a>');
+		  -->
+		</script>
+	</td>
+  </tr>
+</table>
+
+ <div class="hh2">詳細検索が使いやすくなりました</div>
+ <div class="normal">検索の際に演算子を使用することで、検索キーワードや数字をより細かく指定し、検索の性能をあげることができます。このページに記載されているオプションは全て検索ボックスに直接入力することが可能です。 </div>
+ <div class="hh2">基本操作</div> 
+ <div class="normal">検索条件としては単語/数字または語句を入力することができます。例えば、<strong>'Miller'</strong>, <strong>'> 500'</strong> や <strong>'>=
+   Smith'</strong>のように入力し、</div>
+ <table cellpadding="0" cellspacing="10">
+   <tr valign="top">
+     <td>&#8226;  <strong>column header</strong> をクリックして指定した条件にマッチするオブジェクトを検索します。(現在設定されているフィルタ条件にかかわらず<strong>全てのオブジェクト</strong>が検索対象になります。その際、既に取得済みの検索結果は失われます。)</td>
+	 <td bgcolor="#CCCCCC"><strong>新規検索</strong><br />
+	 <img src="images/helpSearchTut0.gif" width="129" height="51" /></td>
+   </tr>
+   <tr valign="top">
+     <td>&#8226; <strong>[+] button</strong>をクリックして指定した条件にマッチするオブジェクトを検索します。(<strong>前回のフィルタ設定や検索結果に含まれるオブジェクトのみ</strong>が検索対象となります。得られた検索結果からさらに条件を絞り込んで検索することができます。)</td>
+	 <td bgcolor="#CCCCCC"><strong>条件追加</strong><br />
+	 <img src="images/helpSearchTut1.gif" width="129" height="51" /></td>
+   </tr>
+</table>
+ <div class="hh2">演算子</div>
+ <div class="normal">サポートされる演算子は以下です。(※ データベースシステムによっては全ての演算子がサポートされない場合もあります。):</div>
+ <ul>
+ <li>sounds like (<strong>*</strong>)</li>
+ <li>部分検索 (<strong>%</strong>)、 文字列検索の規定値</li>
+ <li>等しい (<strong>=</strong>)、ブール値、数値、コード検索の規定値</li>
+ <li>等しくない (<strong><></strong>、<strong>!</strong>=)</li>
+ <li>より小さい (<strong><</strong>)</li>
+ <li>以下 (<strong><=</strong>)</li>
+ <li>より大きい (<strong>></strong>)</li>
+ <li>以上 (<strong>>=</strong>)</li>
+ </ul>
+ <div class="hh2">&quot;AND&quot; 検索</div>
+ <div class="normal">一度の検索で複数の条件に同時にマッチするオブジェクトを得るには、
+   各条件の間にアンパサンド&quot;<strong>  &amp;</strong>&quot;を使用します。 例えば、500から1000までの数値(500より大きく1000より小さい)を含むオブジェクトを検索するには: <strong>'&gt;500    &amp; &lt;1000'</strong>と入力します。</div>
+ <div class="hh2">&quot;OR&quot; 検索</div>
+<div class="normal">AまたはBという単語を含むオブジェクトを得るには各単語の間にセミコロン &quot;     <strong>;</strong>&quot; を使用します。 例えば、'Smith' または 'Miller'という名前の
+     担当者を検索するには: <strong>'= Smith; Miller'</strong>と入力します。</div>
+ <div class="hh2">連結検索</div>
+ <div class="normal">複数の条件を実質上限なしに連結することができます。例えば、1000以下の、
+   500ではなく、かつ600ではない値を持つオブジェクトを検索するには: <strong>'&lt;&gt;500; 600 
+   &amp; &lt;1000'</strong>と入力します。</div>
+ <div class="normal">連結検索の構文解析ルールは以下に基づいています:</div>
+ <ul>
+   <li>searchExpr ::= filterValue { & filterValue }<br />
+   (--> string tokenizer with <strong>&</strong> as separator)</li>
+   <li>filterValue ::= [operator] value { ; value }<br />
+   (--> string tokenizer with <strong>;</strong> as separator)</li>
+ </ul>
+ <div class="hh2">ワイルドカード検索</div>
+ <div class="normal">
+   <p>データベースによってはワイルドカードを使用できるものもあります。 
+   例えば、'ller'を含む名前の担当者を全て検索するには: <strong>'%%ller'と入力します</strong>。<br />
+   ※データベースのチューニングによっては、ワイルドカード検索は非常に時間がかかる場合があります(全てのテーブルをスキャンするため)。 </p>
+ </div>
+</body>
+</html>
