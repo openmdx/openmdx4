@@ -47,7 +47,7 @@ plugins {
 }
 
 val projectFlavour = providers.gradleProperty("flavour").getOrElse("4")
-val projectSpecificationVersion = "0"
+val projectSpecificationVersion = "19"
 val projectMaintenanceVersion = "0"
 val runtimeCompatibility = if (projectFlavour < "4") JavaVersion.VERSION_1_8 else JavaVersion.VERSION_21
 val jmiClassic = projectFlavour < "5"
@@ -67,7 +67,10 @@ allprojects {
     
 	repositories {
 		mavenCentral()
-	    maven {
+		maven {
+			url = uri("https://www.openmdx.org/repos/releases")
+		}
+		maven {
 	       url = uri("file:" + File(project.rootDir, "publish/build/repos/releases"))
 	    }
 	}
