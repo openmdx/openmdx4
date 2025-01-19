@@ -55,8 +55,6 @@ include(
     "openmdx-4-platform",
     "core",
     "security",
-    "test-core",
-    "test-security",
     "publish",
     "portal",
     "tomcat"
