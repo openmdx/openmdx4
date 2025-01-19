@@ -193,8 +193,7 @@ dependencies {
     // openmdxBootstrap
     openmdxBootstrap(platform(project(projectPlatform)))
     openmdxBootstrap(files(file(layout.buildDirectory.dir("generated/classes/openmdxBootstrap"))))
-    //openmdxBootstrap("jakarta.platform:jakarta.jakartaee-api")
-	openmdxBootstrap("javax:javaee-api:8.0.+")
+    openmdxBootstrap("jakarta.platform:jakarta.jakartaee-api")
 	openmdxBootstrap("com.vladsch.flexmark:flexmark")
     // jdo-api
     jdoApi(platform(project(projectPlatform)))

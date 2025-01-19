@@ -50,7 +50,6 @@ import jakarta.resource.ResourceException;
 import jakarta.resource.cci.IndexedRecord;
 import jakarta.resource.cci.Interaction;
 import jakarta.resource.cci.MappedRecord;
-
 import org.openmdx.base.accessor.cci.SystemAttributes;
 import org.openmdx.base.resource.spi.RestInteractionSpec;
 import org.openmdx.base.rest.cci.ObjectRecord;

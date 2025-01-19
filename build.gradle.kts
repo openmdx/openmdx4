@@ -48,9 +48,9 @@ plugins {
 
 val projectFlavour = providers.gradleProperty("flavour").getOrElse("4")
 val projectSpecificationVersion = "19"
-val projectMaintenanceVersion = "0"
+val projectMaintenanceVersion = "1"
 val runtimeCompatibility = if (projectFlavour < "4") JavaVersion.VERSION_1_8 else JavaVersion.VERSION_21
-val jmiClassic = projectFlavour < "5"
+val classicChronoTypes = projectFlavour == "2" || projectFlavour == "4"
 
 allprojects {
 
@@ -83,8 +83,8 @@ allprojects {
         if(runtimeCompatibility.isJava8()) {
         	options.compilerArgs.add("-Xlint:-options")
         }
-        if(jmiClassic) {
-        	options.compilerArgs.add("-AJMI_CLASSIC")
+        if(classicChronoTypes) {
+        	options.compilerArgs.add("-ACLASSIC_CHRONO_TYPES")
         }
         options.annotationProcessorPath = configurations.annotationProcessor.get()
     }

@@ -13,24 +13,33 @@ public class DateTime {
     }
 
     /**
-     * Convert a {@code java.util.Date} to an {@code SQL TIMESTAMP}
+     * Convert an org::w3c:.dateTime value to an {@code SQL TIMESTAMP}
      * 
-     * @param cciDateTime the {@code java.util.Date} to be converted
+     * @param cciDateTime the org::w3c:.dateTime value to be converted
      * 
-     * @return a corresponding {@code SQL TIMESTAMP}
+     * @return the corresponding {@code SQL TIMESTAMP}
      */
-    public static final java.sql.Timestamp toJDO (
-        java.util.Date cciDateTime
-    ){
+    public static final java.sql.Timestamp toJDO (java.util.Date cciDateTime) {
         return cciDateTime == null ? null : new java.sql.Timestamp(cciDateTime.getTime());
     }
 
     /**
-     * Convert an {@code SQL TIMESTAMP} to a {@code java.util.Date}
+     * Convert an org::w3c:.dateTime value to an {@code SQL TIMESTAMP}
+     *
+     * @param cciDateTime the org::w3c:.dateTime value to be converted
+     *
+     * @return the corresponding {@code SQL TIMESTAMP}
+     */
+    public static final java.sql.Timestamp toJDO (java.time.Instant cciDateTime) {
+        return cciDateTime == null ? null : java.sql.Timestamp.from(cciDateTime);
+    }
+
+    /**
+     * Convert an {@code SQL TIMESTAMP} to org::w3c::dateTime value
      * 
      * @param jdoDateTime the {@code SQL TIMESTAMP} to be converted
      * 
-     * @return a corresponding {@code java.util.Date}
+     * @return the corresponding org::w3c::dateTime value
      */
     public static final java.util.Date toCCI (
         java.sql.Timestamp jdoDateTime

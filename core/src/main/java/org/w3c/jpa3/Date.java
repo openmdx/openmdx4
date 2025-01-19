@@ -61,9 +61,9 @@ public class Date {
     }
 
     /**
-     * Convert an XML Gregorian Calendar to an SQL date
+     * Convert an org::w3c::date value to an SQL date
      * 
-     * @param cciDate the XML Gregorian Calendar to be converted
+     * @param cciDate the org::w3c::date value to be converted
      * 
      * @return a corresponding SQL date instance
      */
@@ -74,18 +74,16 @@ public class Date {
     }
 
     /**
-     * Convert an SQL date to an XML Gregorian Calendar
+     * Convert an SQL date to an org::w3c::date value
      * 
      * @param jdoDate the SQL date to be converted
      * 
-     * @return a corresponding XML Gregorian Calendar instance
+     * @return the corresponding org::w3c::date value
      */
-    public static final javax.xml.datatype.XMLGregorianCalendar toCCI (
+    public static final  javax.xml.datatype.XMLGregorianCalendar toCCI (
         java.sql.Date jdoDate
     ){
-        String value = jdoDate == null ?
-            null :
-                jdoDate.toString();
+        String value = jdoDate == null ? null : jdoDate.toString();
         if(value == null) {
             return null;
         } else try {

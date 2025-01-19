@@ -59,7 +59,6 @@ import jakarta.resource.cci.IndexedRecord;
 import jakarta.resource.cci.Interaction;
 import jakarta.resource.cci.MappedRecord;
 import jakarta.resource.spi.IllegalStateException;
-
 import org.openmdx.application.mof.cci.ModelExceptions;
 import org.openmdx.application.mof.mapping.cci.Mapper_1_0;
 import org.openmdx.application.mof.mapping.cci.Mapper_1_1;

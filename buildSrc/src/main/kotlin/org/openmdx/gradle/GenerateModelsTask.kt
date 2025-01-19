@@ -57,6 +57,7 @@ open class GenerateModelsTask : JavaExec() {
 	init {
 		mainClass.set("org.openmdx.application.mof.externalizer.xmi.XMIExternalizer")
 		args = listOf(
+			"--flavour=${generateFlavour}",
 			"--pathMapSymbol=openMDX 2 ~ Core (EMF)",
 			"--pathMapPath=file:" + File("${project.rootDir}/core/src/model/emf") + "/",
 			"--pathMapSymbol=openMDX 2 ~ Security (EMF)",
