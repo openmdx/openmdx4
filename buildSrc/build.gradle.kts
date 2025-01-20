@@ -54,6 +54,6 @@ dependencies {
 repositories {
     mavenCentral()
     maven {
-        url = uri("https://datura.econoffice.ch/maven2")
+        url = uri("https://www.openmdx.org/repos/releases")
     }
 }

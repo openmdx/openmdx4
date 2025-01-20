@@ -52,9 +52,6 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.catalina.Manager;
 import org.apache.catalina.Realm;
 import org.apache.catalina.Session;
@@ -66,6 +63,9 @@ import org.apache.catalina.realm.RealmBase;
 import org.apache.catalina.valves.ValveBase;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * An <b>Authenticator</b> and <b>Valve</b> implementation of authentication
@@ -277,9 +277,9 @@ public class RemoteUserAuthenticator extends ValveBase {
         Session session = request.getSessionInternal(false);
         if(session != null) {
             Manager manager = request.getContext().getManager();
-            manager.changeSessionId(session);
+            manager.rotateSessionId(session);
             request.changeSessionId(session.getId());
-        } 
+        }
         if(session != null) {
             session.setAuthType(authType);
             session.setPrincipal(principal);

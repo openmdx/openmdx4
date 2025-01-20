@@ -79,8 +79,8 @@ dependencies {
 	implementation(project(":core"))
 	implementation(project(":security"))
 	implementation(platform(project(projectPlatform)))
-	implementation("jakarta.platform:jakarta.jakartaee-api")
-	implementation("org.apache.tomcat:tomcat-catalina")
+	implementation("jakarta.platform:jakarta.jakartaee-api:10.0.0")
+	implementation("org.apache.tomcat:tomcat-catalina:10.1.+")
 }
 
 sourceSets {
