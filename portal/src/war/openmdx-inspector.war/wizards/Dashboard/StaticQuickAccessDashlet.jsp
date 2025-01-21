@@ -92,9 +92,9 @@ org.openmdx.kernel.log.*
 	e0022=xri://@openmdx*org.opencrx.kernel.activity1/provider/CRX/segment/Standard/activityCreator&queryType=org:opencrx:kernel:activity1:ActivityCreator&query=name().equalTo("Sample~Underwriting"); > Operation.org:opencrx:kernel:activity1:ActivityCreator:newActivity
 	e0023=xri://@openmdx*org.opencrx.kernel.activity1/provider/CRX/segment/Standard/activityTracker&queryType=org:opencrx:kernel:activity1:ActivityTracker&query=name().equalTo("Sample~Underwriting"); > Reference.filteredActivity	
  */
-	ApplicationContext app = (ApplicationContext)session.getValue(WebKeys.APPLICATION_KEY);
+	ApplicationContext app = (ApplicationContext)session.getAttribute(WebKeys.APPLICATION_KEY);
 	Texts_1_0 texts = app.getTexts();
-	ViewsCache viewsCache = (ViewsCache)session.getValue(WebKeys.VIEW_CACHE_KEY_SHOW);
+	ViewsCache viewsCache = (ViewsCache)session.getAttribute(WebKeys.VIEW_CACHE_KEY_SHOW);
 	String parameters = request.getParameter(WebKeys.REQUEST_PARAMETER);
   	if(app != null && parameters != null) {
   		

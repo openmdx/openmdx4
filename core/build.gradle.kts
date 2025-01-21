@@ -231,6 +231,7 @@ tasks {
 		"javax/cache/*/**",
 		"javax/jdo/*/**",
 		"javax/jmi/*/**",
+		"javax/transaction/Synchronization.class",
 		"net/*/NetPackage*",
 		"net/rfc/*/RfcPackage*",
 		"org/*/OrgPackage*",

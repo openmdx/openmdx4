@@ -232,7 +232,7 @@ public abstract class JsfWizardController extends AbstractWizardController {
 		int i = 0;
 		while(i < message.length()) {
 			if((i <= message.length()-4) && "${".equals(message.substring(i,i+2))) {
-				short index = new Short(message.substring(i+2, i+3)).shortValue();
+				short index = Short.valueOf(message.substring(i+2, i+3)).shortValue();
 				try {
 					preparedMessage += parameters[index];
 				} catch(Exception ignore) {

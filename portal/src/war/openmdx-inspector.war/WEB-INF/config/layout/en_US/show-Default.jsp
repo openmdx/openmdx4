@@ -55,8 +55,8 @@ org.openmdx.portal.servlet.control.*,
 org.openmdx.portal.servlet.component.*
 " %>
 <%
-	ApplicationContext app = (ApplicationContext)session.getValue(WebKeys.APPLICATION_KEY);
-	ViewsCache viewsCache = (ViewsCache)session.getValue(WebKeys.VIEW_CACHE_KEY_SHOW);
+	ApplicationContext app = (ApplicationContext)session.getAttribute(WebKeys.APPLICATION_KEY);
+	ViewsCache viewsCache = (ViewsCache)session.getAttribute(WebKeys.VIEW_CACHE_KEY_SHOW);
 	ShowObjectView view = (ShowObjectView)viewsCache.getView(request.getParameter(Action.PARAMETER_REQUEST_ID));
 	Texts_1_0 texts = app.getTexts();
 	ShowInspectorControl inspectorControl = (ShowInspectorControl)view.getControl();

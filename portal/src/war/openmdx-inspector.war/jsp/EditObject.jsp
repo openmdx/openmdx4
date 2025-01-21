@@ -56,7 +56,7 @@ org.openmdx.base.exception.*
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	try {
-		ViewsCache viewsCache = (ViewsCache)session.getValue(WebKeys.VIEW_CACHE_KEY_EDIT);
+		ViewsCache viewsCache = (ViewsCache)session.getAttribute(WebKeys.VIEW_CACHE_KEY_EDIT);
 		EditObjectView view = (EditObjectView)viewsCache.getView(request.getParameter(Action.PARAMETER_REQUEST_ID));
 	    ServletContext sc = getServletConfig().getServletContext();
 	    RequestDispatcher rd = sc.getRequestDispatcher(view.getLayout(true));

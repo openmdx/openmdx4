@@ -62,6 +62,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.text.ParseException;
@@ -92,8 +94,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
 import javax.jmi.reflect.RefObject;
 import javax.jmi.reflect.RefStruct;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpSession;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -198,6 +198,9 @@ import org.openmdx.ui1.jmi1.ElementDefinition;
 import org.openmdx.ui1.jmi1.FeatureDefinition;
 import org.openmdx.ui1.jmi1.StructuralFeatureDefinition;
 import org.w3c.cci2.MutableDatatypeFactory;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * DefaultPortalExtension
@@ -1529,7 +1532,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 												);
 											}
 										} else if(PrimitiveTypes.LONG.equals(featureTypeName)) {
-											Long mappedNewValue = new Long(number.longValue());
+											Long mappedNewValue = Long.valueOf(number.longValue());
 											if(target instanceof RefObject) {
 												Object value = this.getValue(
 													valueHolder, 
@@ -1579,7 +1582,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 												);
 											}
 										} else {
-											Short mappedNewValue = new Short(number.shortValue());
+											Short mappedNewValue = Short.valueOf(number.shortValue());
 											if(target instanceof RefObject) {
 												Object value = this.getValue(
 													valueHolder, 
@@ -1652,7 +1655,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 													);
 												} else { // if(PrimitiveTypes.SHORT.equals(featureTypeName)) {
 													mappedNewValues.add(
-														new Short(number.shortValue())
+														Short.valueOf(number.shortValue())
 													);
 												}
 											} else {
@@ -1920,7 +1923,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 												xri = ""; // reference removed by user
 											} else {
 												try {
-													URL titleUrl = new URL((String)(titleValues[0]));
+													URL titleUrl = new URI((String)(titleValues[0])).toURL();
 													if("xri".equals(titleUrl.getProtocol())) {
 														xri = (String)titleValues[0];
 													} else {
@@ -1936,9 +1939,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 															}
 														}
 													}
-												} catch(MalformedURLException e) {
-													xriSetAsTitleIsInvalid = true;
-												} catch(UnsupportedEncodingException e) {
+												} catch(UnsupportedEncodingException | URISyntaxException | MalformedURLException e) {
 													xriSetAsTitleIsInvalid = true;
 												}
 											}
@@ -2094,7 +2095,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 								// single-valued
 								if(valueHolder.isSingleValued()) {
 									Boolean mappedNewValue =
-										new Boolean(
+										Boolean.valueOf(
 											!newValues.isEmpty() &&
 											("true".equals(newValues.get(0)) ||
 												"on".equals(newValues.get(0)) ||
@@ -2152,7 +2153,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 									for(Iterator<String> j = newValues.iterator(); j.hasNext(); ) {
 										Object mappedNewValue = j.next();
 										mappedNewValues.add(
-											new Boolean(
+											Boolean.valueOf(
 												"true".equals(mappedNewValue) ||
 												"on".equals(mappedNewValue) ||
 												app.getTexts().getTrueText().equals(mappedNewValue)

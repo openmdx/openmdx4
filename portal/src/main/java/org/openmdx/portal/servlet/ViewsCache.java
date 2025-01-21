@@ -101,7 +101,7 @@ public class ViewsCache {
     	}
         session.setAttribute(
             WebKeys.VIEW_CACHE_CACHED_SINCE, 
-            new Long(cachedSince)
+            Long.valueOf(cachedSince)
         );
     }
 

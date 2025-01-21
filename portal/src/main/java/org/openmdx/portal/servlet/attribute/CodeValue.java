@@ -128,7 +128,7 @@ public class CodeValue extends AttributeValue implements Serializable {
         this.containerName = containerName;
         this.defaultValue = fieldDef.defaultValue == null
             ? null
-            : new Short(fieldDef.defaultValue);
+            : Short.valueOf(fieldDef.defaultValue);
     }
 
     /**
@@ -263,7 +263,7 @@ public class CodeValue extends AttributeValue implements Serializable {
     		for(Iterator<?> i = ((Collection<?>)value).iterator(); i.hasNext(); ) {
     			Object code = i.next();
     			if(code instanceof Number) {
-    				Short codeAsShort = new Short(((Number)code).shortValue());
+    				Short codeAsShort = Short.valueOf(((Number)code).shortValue());
     				String text = shortFormat
     					? (String)this.getShortText(true, true).get(codeAsShort)
     					: (String)this.getLongText(true, true).get(codeAsShort);
@@ -283,7 +283,7 @@ public class CodeValue extends AttributeValue implements Serializable {
     		return values;
     	} else {
     		if(value instanceof Number) {
-    			Short codeAsShort = new Short(((Number)value).shortValue());
+    			Short codeAsShort = Short.valueOf(((Number)value).shortValue());
     			String text = shortFormat
     				? (String)this.getShortText(true, true).get(codeAsShort)
     				: (String)this.getLongText(true, true).get(codeAsShort);
@@ -574,7 +574,7 @@ public class CodeValue extends AttributeValue implements Serializable {
     				values.add(v);
     			}
     			for(Iterator<?> i = values.iterator(); i.hasNext(); ) {
-    				Short codeValue = new Short(((Number)i.next()).shortValue());
+    				Short codeValue = Short.valueOf(((Number)i.next()).shortValue());
     				String codeText = (String)this.getLongText(true, true).get(codeValue);
     				String color = (String)this.app.getCodes().getColors(
     					this.containerName,

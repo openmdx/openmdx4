@@ -3,7 +3,6 @@ import="
 java.util.*,
 java.io.*,
 java.text.*,
-org.openmdx.application.cci.*,
 org.openmdx.base.text.conversion.*,
 org.openmdx.base.accessor.cci.*,
 org.openmdx.kernel.id.cci.*,

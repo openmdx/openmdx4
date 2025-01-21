@@ -1126,7 +1126,7 @@ public abstract class UiGrid extends Grid implements Serializable {
     		if(i == null) {
     			i = Collections.<RefObject_1_0>emptyList().iterator();
     		}
-    		this.currentPage = new Double(Math.ceil((double)firstRow / (double)newPageSize)).intValue();    
+    		this.currentPage = Double.valueOf(Math.ceil((double)firstRow / (double)newPageSize)).intValue();    
     		this.currentPageSize = newPageSize;
     		int nCols = Math.min(
 				control.getObjectContainer().getMember().size(),
@@ -1506,7 +1506,7 @@ public abstract class UiGrid extends Grid implements Serializable {
 									}
 									if(code == null) {
     									try {
-    										code = new Short(trimmedToken);
+    										code = Short.valueOf(trimmedToken);
     									} catch(Exception e) {}
 									}
 								}
@@ -1601,7 +1601,7 @@ public abstract class UiGrid extends Grid implements Serializable {
 								// should not be used because serializing of
 								// filters with XMLEncoder does not work
 								values.add(
-									new Long(num.longValue())
+									Long.valueOf(num.longValue())
 								);
 							}
 						}
@@ -1881,7 +1881,7 @@ public abstract class UiGrid extends Grid implements Serializable {
     	ObjectView view = this.getView();
     	this.columnSortOrders.put(
     		feature,
-    		new Short(order)
+    		Short.valueOf(order)
     	);
     	// apply filter to container
     	if(this.currentFilter != null) {

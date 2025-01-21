@@ -57,8 +57,8 @@ org.openmdx.portal.servlet.component.*,
 org.openmdx.portal.servlet.control.*,
 org.openmdx.base.naming.*
 " %><%
-	ApplicationContext app = (ApplicationContext)session.getValue(WebKeys.APPLICATION_KEY);
-	ViewsCache viewsCache = (ViewsCache)session.getValue(WebKeys.VIEW_CACHE_KEY_EDIT);
+	ApplicationContext app = (ApplicationContext)session.getAttribute(WebKeys.APPLICATION_KEY);
+	ViewsCache viewsCache = (ViewsCache)session.getAttribute(WebKeys.VIEW_CACHE_KEY_EDIT);
 	EditObjectView view = (EditObjectView)viewsCache.getView(request.getParameter(Action.PARAMETER_REQUEST_ID));
 	Texts_1_0 texts = app.getTexts();
 	EditInspectorControl inspectorControl = (EditInspectorControl)view.getControl();

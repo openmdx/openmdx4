@@ -93,6 +93,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -108,16 +111,6 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.naming.NamingException;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletRequestWrapper;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpServletResponseWrapper;
-import jakarta.servlet.http.HttpSession;
 
 import org.openmdx.base.accessor.jmi.cci.RefObject_1_0;
 import org.openmdx.base.exception.ServiceException;
@@ -155,6 +148,17 @@ import org.openmdx.uses.org.apache.commons.fileupload.DiskFileUpload;
 import org.openmdx.uses.org.apache.commons.fileupload.FileItem;
 import org.openmdx.uses.org.apache.commons.fileupload.FileUpload;
 import org.openmdx.uses.org.apache.commons.fileupload.FileUploadException;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponseWrapper;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * This is a generic servlet which allows to browse and edit MOF-compliant
@@ -316,9 +320,9 @@ public class ObjectInspectorServlet extends HttpServlet {
         this.portalExtension = new DefaultPortalExtension();
         try {
             if(this.getInitParameter("evaluator") != null) {
-                this.portalExtension = Classes.<PortalExtension_1_0>getApplicationClass(this.getInitParameter("evaluator")).newInstance();
+                this.portalExtension = Classes.<PortalExtension_1_0>getApplicationClass(this.getInitParameter("evaluator")).getDeclaredConstructor().newInstance();
             } else if(this.getInitParameter("portalExtension") != null) {
-                this.portalExtension = Classes.<PortalExtension_1_0>getApplicationClass(this.getInitParameter("portalExtension")).newInstance();
+                this.portalExtension = Classes.<PortalExtension_1_0>getApplicationClass(this.getInitParameter("portalExtension")).getDeclaredConstructor().newInstance();
             }
             if(this.portalExtension instanceof DefaultPortalExtension) {
             	((DefaultPortalExtension)this.portalExtension).setServletContext(context);
@@ -444,7 +448,7 @@ public class ObjectInspectorServlet extends HttpServlet {
         this.htmlEncoder = new DefaultHtmlEncoder();
         try {
             if(this.getInitParameter(WebKeys.CONFIG_HTML_ENCODER) != null) {
-                this.htmlEncoder = Classes.<HtmlEncoder_1_0>getApplicationClass(this.getInitParameter(WebKeys.CONFIG_HTML_ENCODER)).newInstance();
+                this.htmlEncoder = Classes.<HtmlEncoder_1_0>getApplicationClass(this.getInitParameter(WebKeys.CONFIG_HTML_ENCODER)).getDeclaredConstructor().newInstance();
             }
         } catch(Exception e) {
         	this.log("loading " + WebKeys.CONFIG_HTML_ENCODER + " failed", e);
@@ -561,7 +565,7 @@ public class ObjectInspectorServlet extends HttpServlet {
         app.setTextsFactory(this.texts);
         app.setUiContext(this.uiContext);
         app.setWizardDefinitionFactory(this.wizardDefinitionFactory);
-        app.setTempDirectory((File)this.getServletContext().getAttribute("javax.servlet.context.tempdir"));
+        app.setTempDirectory(new File(ServletContext.TEMPDIR));
         app.setTempFilePrefix(request.getSession().getId() + "-");
         app.setQuickAccessorsReference(this.favoritesReference);
         app.setMimeTypeImpls(this.mimeTypeImpls);
@@ -643,6 +647,7 @@ public class ObjectInspectorServlet extends HttpServlet {
      * @param res
      * @throws ServletException
      * @throws IOException
+     * @throws URISyntaxException 
      */
     private void handleRequest(
         HttpServletRequest req, 
@@ -1144,7 +1149,7 @@ public class ObjectInspectorServlet extends HttpServlet {
                     ModelElement_1_0 featureDef = app.getModel().getElement(feature);
                     if(Multiplicity.STREAM.code().equals(featureDef.getMultiplicity())) {
                         long length = refObj.refGetValue(feature, os, 0);
-                        response.setContentLength(new Long(length).intValue());       
+                        response.setContentLength(Long.valueOf(length).intValue());       
                     } else {
                         byte[] bytes = (byte[])refObj.refGetValue(feature);
                         if(bytes != null) {
@@ -1258,7 +1263,12 @@ public class ObjectInspectorServlet extends HttpServlet {
                     String autostartUrl = app.getPortalExtension().getAutostartUrl(session, app);
                     // Redirect to autostart URL
                     if(autostartUrl != null) {
-                    	URL url = new URL("http://localhost/" + request.getContextPath() + autostartUrl);
+                    	URL url;
+						try {
+							url = new URI("http://localhost/" + request.getContextPath() + autostartUrl).toURL();
+						} catch (MalformedURLException | URISyntaxException e) {
+							throw new ServletException(e);
+						}
                     	boolean hasQuery = url.getQuery() != null;
                     	boolean hasXri = autostartUrl.indexOf(Action.PARAMETER_OBJECTXRI) >= 0;
                     	response.sendRedirect(

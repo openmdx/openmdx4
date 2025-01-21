@@ -60,8 +60,8 @@ org.openmdx.portal.servlet.*,
 org.openmdx.kernel.log.*
 " %>
 <%
-	ApplicationContext app = (ApplicationContext)session.getValue(WebKeys.APPLICATION_KEY);
-	ViewsCache viewsCache = (ViewsCache)session.getValue(WebKeys.VIEW_CACHE_KEY_SHOW);
+	ApplicationContext app = (ApplicationContext)session.getAttribute(WebKeys.APPLICATION_KEY);
+	ViewsCache viewsCache = (ViewsCache)session.getAttribute(WebKeys.VIEW_CACHE_KEY_SHOW);
 	String parameters = request.getParameter(WebKeys.REQUEST_PARAMETER);
   	if(app != null && parameters != null) {
 		String xri = Action.getParameter(parameters, Action.PARAMETER_OBJECTXRI);

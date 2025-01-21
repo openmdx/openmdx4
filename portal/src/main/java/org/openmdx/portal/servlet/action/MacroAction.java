@@ -112,7 +112,7 @@ public class MacroAction extends BoundAction {
             );
             nextView.setMacro(
                 new Object[]{
-                    actionType == null ? new Short((short)0) : new Short(actionType),
+                    actionType == null ? Short.valueOf((short)0) : Short.valueOf(actionType),
                     actionName,
                     Collections.EMPTY_LIST
                 }
