@@ -1939,7 +1939,7 @@ public class DefaultPortalExtension implements PortalExtension_1_0, Serializable
 															}
 														}
 													}
-												} catch(UnsupportedEncodingException | URISyntaxException | MalformedURLException e) {
+												} catch(UnsupportedEncodingException | URISyntaxException | MalformedURLException | IllegalArgumentException e) {
 													xriSetAsTitleIsInvalid = true;
 												}
 											}
