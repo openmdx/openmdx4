@@ -770,7 +770,7 @@ public class Ui_1 extends AbstractRestPort {
         } else if(PrimitiveTypes.BOOLEAN.equals(typeName)) {
             // boolean
         	fieldFacade.getValue().setRecordName("org:openmdx:ui1:CheckBox");
-        	fieldFacade.attributeValuesAsList("threeState").add(new Boolean(false));
+        	fieldFacade.attributeValuesAsList("threeState").add(Boolean.FALSE);
         } else if(PrimitiveTypes.BINARY.equals(typeName)) {
             // binary
         	fieldFacade.getValue().setRecordName("org:openmdx:ui1:DocumentBox");
@@ -1880,7 +1880,7 @@ public class Ui_1 extends AbstractRestPort {
 		            // three columns
 		            int defaultColumnHeight = 
 		                java.lang.Math.max(
-		                    new Double(java.lang.Math.ceil(groupFacade.attributeValuesAsList("member").size() / 3.0)).intValue(),  
+		                    Double.valueOf(java.lang.Math.ceil(groupFacade.attributeValuesAsList("member").size() / 3.0)).intValue(),  
 		                    7
 		                );
 		            for(
