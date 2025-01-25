@@ -543,8 +543,6 @@ signing {
     sign(publishing.publications["openmdxSystem"])
     sign(publishing.publications["openmdxBase"])
     sign(publishing.publications["openmdxBaseModels"])
-    sign(publishing.publications["openmdxClient"])
-    sign(publishing.publications["openmdxDalvik"])
     sign(publishing.publications["openmdxSecurity"])
     sign(publishing.publications["openmdxSecurityModels"])
     sign(publishing.publications["openmdxAuthentication"])
