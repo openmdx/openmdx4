@@ -104,14 +104,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -138,14 +136,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -172,14 +168,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -206,14 +200,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -240,14 +232,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -274,14 +264,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -308,14 +296,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -342,14 +328,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -376,14 +360,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -410,14 +392,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -444,14 +424,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -478,14 +456,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -512,14 +488,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
@@ -546,14 +520,12 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("wfro")
+                        id.set("wfro64")
                         name.set("Werner Froidevaux")
-                        email.set("wfro64@users.noreply.github.com")
                     }
                     developer {
                         id.set("dirty-harry")
                         name.set("Harry")
-                        email.set("dirty-harry@users.sourceforge.net")
                     }
                 }
                 scm {
