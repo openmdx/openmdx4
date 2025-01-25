@@ -94,10 +94,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
 
-import jakarta.resource.ResourceException;
-import jakarta.resource.cci.Interaction;
-import jakarta.resource.cci.MappedRecord;
-
 import javax.sql.DataSource;
 import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.Duration;
@@ -182,6 +178,10 @@ import org.w3c.cci2.SortedMaps;
 import org.w3c.cci2.SparseArray;
 import org.w3c.format.DateTimeFormat;
 import org.w3c.spi.DatatypeFactories;
+
+import jakarta.resource.ResourceException;
+import jakarta.resource.cci.Interaction;
+import jakarta.resource.cci.MappedRecord;
 
 /**
  * Database_2 implements a OO-to-Relational mapping and makes MappedRecords

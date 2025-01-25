@@ -49,7 +49,6 @@ import java.util.Map;
 
 import jakarta.resource.ResourceException;
 import jakarta.resource.cci.Interaction;
-
 import org.openmdx.base.dataprovider.kernel.Dataprovider_2;
 import org.openmdx.base.resource.spi.Port;
 import org.openmdx.base.rest.cci.RestConnection;

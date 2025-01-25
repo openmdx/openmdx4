@@ -95,7 +95,6 @@ public final class NullValue
      */
     public String getBackColor(
     ) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -104,7 +103,6 @@ public final class NullValue
      */
     public String getColor(
     ) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -113,7 +111,6 @@ public final class NullValue
      */
     public String getIconKey(
     ) {
-        // TODO Auto-generated method stub
         return null;
     }
     

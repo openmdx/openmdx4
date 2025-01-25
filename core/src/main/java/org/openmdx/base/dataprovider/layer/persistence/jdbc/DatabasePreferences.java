@@ -54,7 +54,6 @@ import java.util.Set;
 
 import jakarta.resource.ResourceException;
 import jakarta.resource.cci.MappedRecord;
-
 import org.openmdx.base.dataprovider.layer.persistence.jdbc.dbobject.DbObjectConfiguration;
 import org.openmdx.base.dataprovider.layer.persistence.jdbc.macros.StringMacro;
 import org.openmdx.base.dataprovider.layer.persistence.jdbc.spi.Target;

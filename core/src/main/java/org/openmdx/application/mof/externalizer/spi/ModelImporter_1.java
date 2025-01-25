@@ -53,7 +53,6 @@ import java.util.StringTokenizer;
 import jakarta.resource.NotSupportedException;
 import jakarta.resource.ResourceException;
 import jakarta.resource.cci.MappedRecord;
-
 import org.omg.mof.cci.ScopeKind;
 import org.omg.mof.cci.VisibilityKind;
 import org.openmdx.application.mof.cci.ModelAttributes;
@@ -102,10 +101,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     
     /**
      * The safe way to create a feature path
-     * 
-     * @param classPath
-     * @param featureName
-     * 
+     *
      * @return a new feature path
      */
     protected static Path newFeaturePath(
@@ -234,7 +230,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     protected String nameToPathComponent(
         String name
     ) {
-        if(name.length() == 0) {
+        if(name.isEmpty()) {
             return "";
         } else {
             StringBuilder component = new StringBuilder();
@@ -258,7 +254,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         String modelName,
         String elementName
     ) throws ResourceException {
-        if((modelName == null) || (modelName.length() == 0)) {
+        if((modelName == null) || (modelName.isEmpty())) {
         	throw ResourceExceptions.initHolder(
         		new NotSupportedException(
     				"element not in namespace. Top level elements not supported.",
@@ -302,7 +298,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     ) throws ResourceException {
         try {
             if(
-                ((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef2, "isNavigable")).booleanValue()
+                ((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef2, "isNavigable"))
             ) {
                 ObjectRecord referenceDef = this.channel.newObjectRecord(
                     newFeaturePath(
@@ -382,8 +378,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
             this.checkUnnecessaryQualifiers(associationEndDef1);
             this.checkUnnecessaryQualifiers(associationEndDef2);
         } catch(RuntimeException e) {
-        	e.printStackTrace(); // TODO
-        	throw ResourceExceptions.toResourceException(e);
+        	throw Throwables.log(ResourceExceptions.toResourceException(e));
         }
     }
 
@@ -398,7 +393,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
 		    (AggregationKind.COMPOSITE.equals(DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "aggregation")) ||
 		        AggregationKind.SHARED.equals(DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "aggregation")))
 		        &&
-		        !((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "isNavigable")).booleanValue()
+		        !((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "isNavigable"))
 		) {
 			throw newModelException(
 		            "An association end with aggregation 'composite' should be navigable.",
@@ -418,7 +413,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     ) throws ResourceException {
     	if(
 		    (DataproviderMode.DATAPROVIDER_2.attributeHasValue(associationEndDef, "qualifierName")) &&
-		    !((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "isNavigable")).booleanValue()
+		    !((Boolean)DataproviderMode.DATAPROVIDER_2.attributeValue(associationEndDef, "isNavigable"))
 		) {
 			throw newModelException(
 		            "Found association end with qualifier which is not navigable. Only navigable association ends need a unique identifying qualifier.",
@@ -447,7 +442,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         MappedRecord aliasTypeDef,
         String attributeName
     ) throws ResourceException {
-        if (attributeName.indexOf("::") == -1)
+        if (!attributeName.contains("::"))
 			throw newModelException(
 	                "the name of the single attribute of the alias type must be a qualified type name",
 	                ModelExceptions.INVALID_ALIAS_ATTRIBUTE_NAME,
@@ -460,7 +455,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     protected void verifyAssociationName(
         String associationName
     ) throws ResourceException {
-        if (associationName == null || associationName.length() == 0)
+        if (associationName == null || associationName.isEmpty())
 			throw newModelException(
                 "the name of an association cannot be empty",
                 ModelExceptions.ASSOCIATION_NAME_IS_EMPTY
@@ -472,7 +467,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         MappedRecord associationDef,
         String associationEndName
     ) throws ResourceException {
-        if(associationEndName == null || associationEndName.length() == 0)
+        if(associationEndName == null || associationEndName.isEmpty())
 			throw newModelException(
                 "the name of an association end cannot be empty",
                 ModelExceptions.ASSOCIATION_END_NAME_IS_EMPTY,
@@ -480,7 +475,6 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         	);
     }
 
-    //---------------------------------------------------------------------------
     /**
      * parse strings with the following EBNF syntax 
      * [ qualifierAttribute ':' qualifierType ] { ';' qualifierAttribute ':' qualifierType }
@@ -489,16 +483,15 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         String _qualifierText
     ) throws ResourceException {
         List qualifierAttributes = new ArrayList();
-
-        /**
-         * qualifier types are in MOF syntax (with '::'). Since the standard
-         * Java StringTokenizer cannot distinguish between ':' that separates
-         * an attribute name from its attribute type and a '::' that is used 
-         * to qualify attribute types, the input text is first converted from
-         * MOF to Java syntax ('.' instead of '::'). This makes the lexical
-         * analysis a lot easier and avoids having to write a dedicated tokenizer
-         * that can handle the problem mentioned above.
-         */
+        //
+        // qualifier types are in MOF syntax (with '::'). Since the standard
+        // Java StringTokenizer cannot distinguish between ':' that separates
+        // an attribute name from its attribute type and a '::' that is used
+        // to qualify attribute types, the input text is first converted from
+        // MOF to Java syntax ('.' instead of '::'). This makes the lexical
+        // analysis a lot easier and avoids having to write a dedicated tokenizer
+        // that can handle the problem mentioned above.
+        //
         String qualifierText = qualifiedNameToJava(_qualifierText);
 
         StringTokenizer tokenizer = new StringTokenizer(qualifierText.trim(), ":; \t", true);
@@ -551,7 +544,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         StringTokenizer tokenizer,
         String qualifierText
     ) throws ResourceException {
-        String nextToken = new String();
+        String nextToken = "";
         if(tokenizer.hasMoreTokens()) {
 			nextToken = tokenizer.nextToken();
             // skip spaces and tabs
@@ -573,7 +566,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
 		final String exceptionMessage,
 		final int exceptionCode,
 		final BasicException.Parameter... exceptionParameters
-	) throws ResourceException {
+	){
         SysLog.error(exceptionMessage);
 		return ResourceExceptions.initHolder(
 			new ResourceException(
@@ -595,7 +588,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     private String javaToQualifiedName(
         String javaQualifiedName
     ) {
-        String qualifiedName = new String();
+        StringBuilder qualifiedName = new StringBuilder();
         for(
                 int i = 0;
                 i < javaQualifiedName.length();
@@ -603,13 +596,13 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
         ) {
             char ch = javaQualifiedName.charAt(i);
             if(ch == '.') {
-                qualifiedName = qualifiedName + "::";
+                qualifiedName.append("::");
             }
             else {
-                qualifiedName = qualifiedName + ch;
+                qualifiedName.append(ch);
             }
         }
-        return qualifiedName;
+        return qualifiedName.toString();
     }
 
     //---------------------------------------------------------------------------
@@ -620,7 +613,7 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     private String qualifiedNameToJava(
         String qualifiedName
     ) {
-        String javaQualifiedName = new String();
+        StringBuilder javaQualifiedName = new StringBuilder();
         for(
                 int i = 0;
                 i < qualifiedName.length();
@@ -629,18 +622,18 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
             char ch = qualifiedName.charAt(i);
             if(ch == ':') {
                 if((i+1 < qualifiedName.length()) && (qualifiedName.charAt(i+1) == ':')) {
-                    javaQualifiedName = javaQualifiedName + '.';
+                    javaQualifiedName.append('.');
                     i++;
                 }
                 else {
-                    javaQualifiedName = javaQualifiedName + ':';
+                    javaQualifiedName.append(':');
                 }
             }
             else {
-                javaQualifiedName = javaQualifiedName + ch;
+                javaQualifiedName.append(ch);
             }
         }
-        return javaQualifiedName;
+        return javaQualifiedName.toString();
     }
 
     //---------------------------------------------------------------------------
@@ -652,11 +645,9 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     public String getScope(
         String qualifiedName
     ) {
-        return (
-                qualifiedName.lastIndexOf("::") == -1 ?
-                    new String() :
-                        qualifiedName.substring(0, qualifiedName.lastIndexOf("::"))
-        );
+        return qualifiedName.lastIndexOf("::") == -1 ?
+            "" :
+            qualifiedName.substring(0, qualifiedName.lastIndexOf("::"));
     }
 
     //---------------------------------------------------------------------------
@@ -680,18 +671,23 @@ abstract public class ModelImporter_1 implements ModelImporter_1_0 {
     //------------------------------------------------------------------------
     
     protected static class Qualifier {
-        private String name = null;
-        private String type = null;
 
-        public Qualifier(String name, String type)
-        {
+        public Qualifier(String name, String type) {
             this.name = name;
             this.type = type;
         }
 
-        public String getName() { return this.name; }
+        private final String name;
+        private final String type;
 
-        public String getType() { return this.type; }
+        public String getName() {
+            return this.name;
+        }
+
+        public String getType() {
+            return this.type;
+        }
+
     }
 
 }

@@ -1,7 +1,7 @@
 /*
  * ====================================================================
- * Project:     openmdx, http://www.openmdx.org/
- * Description: Format 
+ * Project:     openMDX, http://www.openmdx.org/
+ * Description: Mapping Types 
  * Owner:       the original authors.
  * ====================================================================
  *
@@ -39,17 +39,38 @@
  * 
  * ------------------
  * 
- * This product includes software developed by other organizations as
- * listed in the NOTICE file.
+ * This product includes or is based on software developed by other 
+ * organizations as listed in the NOTICE file.
  */
-
-package org.openmdx.application.mof.mapping.java;
+package org.openmdx.application.mof.mapping.cci;
 
 /**
- * Format
+ * This class defines options being passed as extended format values to the model provider
  */
-public enum Format {
+public class ExtendedFormatOptions {
     
-    CCI2, SPI2, JMI1, JPA3
-        
+    private ExtendedFormatOptions() {
+        // Avoid instantiation
+    }
+    
+    /**
+     * This is a modifier telling that annotations use markdown
+     */
+    public static final String MARKDOWN = "--markdown-annotations";
+
+    /**
+     * This is a modifier telling to use Jakarta 8
+     */
+    public static final String JAKARTA_8 = "--jakarta-8";
+
+    /**
+     * This is a modifier telling to use classic JMI mapping
+     */
+    public static final String CLASSIC_CHRONO_TYPES = "--classic-chrono-types";
+
+    /**
+     * This is a modifier telling to export packages even if they are already provided
+     */
+    public static final String INCLUDE_PROVIDED_PACKAGES = "--include-provided-packages";
+
 }

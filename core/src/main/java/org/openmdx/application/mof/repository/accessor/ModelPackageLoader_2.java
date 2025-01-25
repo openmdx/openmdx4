@@ -50,7 +50,6 @@ import java.util.List;
 import java.util.Map;
 import jakarta.resource.ResourceException;
 import jakarta.resource.cci.MappedRecord;
-
 import org.omg.mof.spi.Names;
 import org.openmdx.application.xml.spi.Dataprovider_2Target;
 import org.openmdx.application.xml.spi.ImportHelper;

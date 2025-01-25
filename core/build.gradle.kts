@@ -298,7 +298,7 @@ tasks {
 	            include(
 	                "**/*.java"
 	            )
-				filter { it.replace("@javax.annotation", "@jakarta.annotation") }
+				//filter { it.replace("@javax.annotation", "@jakarta.annotation") }
 	        }
 	        copy {
 	            from(
