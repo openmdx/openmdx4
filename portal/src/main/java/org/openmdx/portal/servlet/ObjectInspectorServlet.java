@@ -565,7 +565,7 @@ public class ObjectInspectorServlet extends HttpServlet {
         app.setTextsFactory(this.texts);
         app.setUiContext(this.uiContext);
         app.setWizardDefinitionFactory(this.wizardDefinitionFactory);
-        app.setTempDirectory(new File(ServletContext.TEMPDIR));
+        app.setTempDirectory((File)session.getServletContext().getAttribute(ServletContext.TEMPDIR));
         app.setTempFilePrefix(request.getSession().getId() + "-");
         app.setQuickAccessorsReference(this.favoritesReference);
         app.setMimeTypeImpls(this.mimeTypeImpls);
