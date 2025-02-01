@@ -164,7 +164,7 @@ org.openmdx.portal.servlet.component.*
 	<link rel="stylesheet" href="js/yui/build/assets/skins/sam/container.css" >
 	<link rel='shortcut icon' href='images/favicon.ico' >
 	<!-- Libraries -->
-	<script type="text/javascript" src="javax.faces.resource/jsf.js.xhtml?ln=javax.faces&amp;stage=Development"></script>	
+	<script type="text/javascript" src="jakarta.faces.resource/faces.js.xhtml?ln=jakarta.faces"></script>	
     <script src="js/prototype.js"></script>
     <script src="js/jquery/jquery.min.js"></script>
 	<script>
