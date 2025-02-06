@@ -498,15 +498,6 @@ function gTabSelect(e, expand) {
 }
 
 //---------------------------------------------------------------------------
-var HTMLeditTextAreaId = "";
-function loadHTMLedit(textareaID, urlPrefix) {
-  HTMLeditTextAreaId = textareaID;
-  if(urlPrefix == null) urlPrefix = "";
-  win = window.open(urlPrefix + 'js/wymeditor/htmledit.htm', '_blank', "titlebar=no,menubar=no,help=yes,status=yes,scrollbars=yes,resizable=yes,dependent=yes,alwaysRaised=yes", true);
-  win.focus();
-}
-
-//---------------------------------------------------------------------------
 var WIKYeditTextAreaId = "";
 function loadWIKYedit(textareaID, urlPrefix) {
   WIKYeditTextAreaId = textareaID;

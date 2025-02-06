@@ -361,8 +361,8 @@ tasks {
 				into("js/openmdx")
 			},
 			copySpec {
-				from("src/js/org/wymeditor")
-				into("js/wymeditor")
+				from("src/js/com/suneditor")
+				into("js/suneditor")
 			},
 			copySpec {
 				from("src/js/net/wiky")

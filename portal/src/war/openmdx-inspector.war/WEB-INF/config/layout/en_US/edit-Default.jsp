@@ -114,6 +114,7 @@ org.openmdx.base.naming.*
 	<link rel="stylesheet" href="js/wiky/wiky.lang.css" >
 	<link rel="stylesheet" href="js/wiky/wiky.math.css" >
 	<link rel="stylesheet" href="js/yui/build/assets/skins/sam/container.css" >
+	<link rel="stylesheet" href="js/suneditor/css/suneditor.min.css" >	
 	<link rel='shortcut icon' href='images/favicon.ico' />
 
 	<!-- Libraries -->
@@ -126,6 +127,7 @@ org.openmdx.base.naming.*
     <script src="js/bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/portal-all.js"></script>
 	<script src="js/calendar/lang/calendar-<%= app.getCurrentLocaleAsString() %>.js"></script>
+    <script src="js/suneditor/suneditor.min.js"></script>    
 	<!--[if lt IE 7]><script type="text/javascript" src="js/iehover-fix.js"></script><![endif]-->
 	<script language="javascript" type="text/javascript">
 		var OF = null;

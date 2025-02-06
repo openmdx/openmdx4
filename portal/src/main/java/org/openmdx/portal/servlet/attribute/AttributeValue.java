@@ -782,7 +782,6 @@ public abstract class AttributeValue implements Serializable {
                     if(readonlyModifier.isEmpty()) {
                         if(attribute.getSpanRow() > 4) {
                         	p.write("  <table style=\"width:100%;\"><tr>");
-                            p.write("    <td><div onclick=\"javascript:loadHTMLedit('", id, "', '", p.getResourcePathPrefix(), "');\"", p.getOnMouseOver("javascript: this.style.backgroundColor='#FF9900';this.style.cursor='pointer';"), p.getOnMouseOut("javascript: this.style.backgroundColor='';"), " >", p.getImg("src=\"", p.getResourcePath("images/html"), p.getImgType(), "\" border=\"0\" alt=\"html\" title=\"\""), "</div></td>");
                             p.write("    <td style=\"width:100%;\"><div onclick=\"javascript:loadWIKYedit('", id, "','", p.getResourcePathPrefix(), "');\"", p.getOnMouseOver("javascript: this.style.backgroundColor='#FF9900';this.style.cursor='pointer';"), p.getOnMouseOut("javascript: this.style.backgroundColor='';"), " >", p.getImg("src=\"", p.getResourcePath("images/wiki"), p.getImgType(), "\" border=\"0\" alt=\"wiki\" title=\"\""), "</div></td>");                             
                             p.write("    <td><div onclick=\"javascript:$('", id, "').value=Wiky.toWiki($('", id, "').value);\"", p.getOnMouseOver("javascript: this.style.backgroundColor='#FF9900';this.style.cursor='pointer';"), p.getOnMouseOut("javascript: this.style.backgroundColor='';"), " >", p.getImg("src=\"", p.getResourcePath("images/htmltowiki"), p.getImgType(), "\" border=\"0\" alt=\"html &gt; wiki\" title=\"\""), "</div></td>");
                             p.write("  </tr></table>");
@@ -791,6 +790,11 @@ public abstract class AttributeValue implements Serializable {
                         	? CssClass.mandatory.toString() 
                         	: "";
                         p.write("  <textarea id=\"", id, "\" name=\"", id, "\" class=\"", classModifier, "\" rows=\"", Integer.toString(attribute.getSpanRow()), "\" cols=\"30\" style=\"width:100%;\" class=\"string\" ", readonlyModifier, " tabindex=\"", Integer.toString(tabIndex), "\">", stringifiedValue, "</textarea>");
+                        if(attribute.getSpanRow() > 4) {
+	                        p.write("<script>");
+	                        p.write("  const editor", Integer.toString(tabIndex), " = SUNEDITOR.create($('", id, "'), {mode: 'inline', display: 'block', width: '100%', height: 'auto', popupDisplay: 'full', buttonList: [['save'],['undo', 'redo'],['font', 'fontSize', 'formatBlock'],['paragraphStyle', 'blockquote'],['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],['fontColor', 'hiliteColor', 'textStyle'],['removeFormat'],['outdent', 'indent'],['align', 'horizontalRule', 'list', 'lineHeight'],['table', 'link', 'image', 'video', 'audio'],['imageGallery'],['fullScreen', 'showBlocks', 'codeView'],['preview', 'print']]}); editor", Integer.toString(tabIndex), ".onBlur = function (e, core) {this.save()}");
+	                        p.write("</script>");
+                        }
                     } else {
                      	// In case of read-only render as input field. However, without id and name attributes
                         p.write("  <textarea rows=\"", Integer.toString(attribute.getSpanRow()), "\" cols=\"30\" class=\"", CssClass.multiStringLocked.toString(), "\" ", readonlyModifier, " tabindex=\"", Integer.toString(tabIndex), "\">", stringifiedValue, "</textarea>");
