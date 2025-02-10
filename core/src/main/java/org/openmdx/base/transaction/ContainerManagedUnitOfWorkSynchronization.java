@@ -84,8 +84,8 @@ public class ContainerManagedUnitOfWorkSynchronization implements Synchronizatio
     ) {
         final TransactionSynchronizationRegistry transactionSynchronizationRegistry = TransactionSynchronizationRegistryFinder
             .getTransactionSynchronizationRegistry();
-        final int transactionStatus = transactionSynchronizationRegistry.getTransactionStatus();
-        if (transactionStatus != javax.transaction.Status.STATUS_ACTIVE) {
+        final Status transactionStatus = Status.valueOf(transactionSynchronizationRegistry.getTransactionStatus());
+        if (transactionStatus != Status.STATUS_ACTIVE) {
             throw new JmiServiceException(
                 BasicException.Code.DEFAULT_DOMAIN,
                 BasicException.Code.ILLEGAL_STATE,
@@ -99,11 +99,6 @@ public class ContainerManagedUnitOfWorkSynchronization implements Synchronizatio
         );
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.transaction.Synchronization#afterCompletion(int)
-     */
     @Override
     public void afterCompletion(
         int status
@@ -128,11 +123,6 @@ public class ContainerManagedUnitOfWorkSynchronization implements Synchronizatio
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.transaction.Synchronization#beforeCompletion()
-     */
     @Override
     public void beforeCompletion() {
         if (delegate.isClosed()) {

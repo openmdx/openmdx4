@@ -143,15 +143,7 @@ fun getVersionClass(packageName: String): String {
             public static void main(
                 String arguments[]
             ) {
-                System.out.println(
-                    new StringBuilder(
-                        Version.class.getName()
-                    ).append(
-                        '='
-                    ).append(
-                        Version.getImplementationVersion()
-                    )
-                );
+                System.out.println(String.format("%s=%s", Version.class.getName(), getImplementationVersion()));
             }
         }
         """.trimIndent()
@@ -171,13 +163,16 @@ dependencies {
     // implementation
     implementation(platform(project(projectPlatform)))
 	implementation("jakarta.platform:jakarta.jakartaee-api")
-    implementation("javax.jdo:jdo-api")
     implementation("javax.cache:cache-api")
 	implementation("com.vladsch.flexmark:flexmark")
 	if(runtimeCompatibility.isJava8()) {
+		implementation(group= "javax.jdo", name = "jdo-api")
 		implementation(group = "com.atomikos", name = "transactions-jta")
 		implementation(group = "com.atomikos", name = "transactions-jdbc")
 	} else {
+		implementation(group= "javax.jdo", name = "jdo-api") {
+			exclude(group = "javax.transaction", module = "transaction-api")
+		}
 		implementation(group = "com.atomikos", name = "transactions-jta", classifier = "jakarta")
 		implementation(group = "com.atomikos", name = "transactions-jdbc", classifier = "jakarta")
 	}
@@ -197,7 +192,13 @@ dependencies {
 	openmdxBootstrap("com.vladsch.flexmark:flexmark")
     // jdo-api
     jdoApi(platform(project(projectPlatform)))
-    jdoApi("javax.jdo:jdo-api")
+	if(runtimeCompatibility.isJava8()) {
+		jdoApi(group= "javax.jdo", name = "jdo-api")
+	} else {
+		jdoApi(group= "javax.jdo", name = "jdo-api") {
+			exclude(group = "javax.transaction", module = "transaction-api")
+		}
+	}
     // cache-api
     cacheApi(platform(project(projectPlatform)))
     cacheApi("javax.cache:cache-api")
@@ -228,36 +229,36 @@ sourceSets {
 tasks {
 
 	val openmdxBaseIncludes = listOf(
-		"javax/cache/*/**",
-		"javax/jdo/*/**",
-		"javax/jmi/*/**",
-		"javax/transaction/Synchronization.class",
+		"javax/cache/**",
+		"javax/jdo/**",
+		"javax/jmi/**",
+		"javax/transaction/**",
 		"net/*/NetPackage*",
 		"net/rfc/*/RfcPackage*",
 		"org/*/OrgPackage*",
 		"org/ietf/*/IetfPackage*",
 		"org/iso/*/IsoPackage*",
-		"org/oasisopen/*/**",
-		"org/omg/*/**",
+		"org/oasisopen/**",
+		"org/omg/**",
 		"org/openmdx/*/OpenmdxPackage*",
 		"org/openmdx/*1/**",
 		"org/openmdx/*2/**",
-		"org/openmdx/application/*/**",
-		"org/openmdx/base/*/**",
-		"org/openmdx/dalvik/uses/*/**",
-		"org/openmdx/exception/*/**",
-		"org/openmdx/kernel/*/**",
-		"org/openmdx/jdo/*/**",
-		"org/openmdx/uses/gnu/*/**",
-		"org/openmdx/uses/java/**",
-		"org/openmdx/uses/org/apache/commons/collections/*/**",
-		"org/openmdx/uses/org/apache/commons/fileupload/*/**",
-		"org/openmdx/uses/org/apache/commons/io/*/**",
-		"org/openmdx/uses/org/apache/commons/pool/*/**",
-		"org/openmdx/uses/org/apache/commons/pool2/*/**",
+		"org/openmdx/application/**",
+		"org/openmdx/base/**",
+		"org/openmdx/dalvik/uses/**",
+		"org/openmdx/exception/**",
+		"org/openmdx/kernel/**",
+		"org/openmdx/jdo/**",
+		"org/openmdx/uses/gnu/**",
+		"org/openmdx/uses/javax/**",
+		"org/openmdx/uses/org/apache/commons/collections/**",
+		"org/openmdx/uses/org/apache/commons/fileupload/**",
+		"org/openmdx/uses/org/apache/commons/io/**",
+		"org/openmdx/uses/org/apache/commons/pool/**",
+		"org/openmdx/uses/org/apache/commons/pool2/**",
 		"org/un/*/UnPackage*",
-		"org/w3c/*/**",
-		"org/xmi/*",
+		"org/w3c/**",
+		"org/xmi/**",
 		"META-INF/orm.xml",
 		"META-INF/openmdx*.properties"
 	)
@@ -298,7 +299,6 @@ tasks {
 	            include(
 	                "**/*.java"
 	            )
-				//filter { it.replace("@javax.annotation", "@jakarta.annotation") }
 	        }
 	        copy {
 	            from(

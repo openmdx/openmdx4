@@ -48,7 +48,6 @@ import javax.jdo.PersistenceManager;
 import jakarta.resource.NotSupportedException;
 import jakarta.resource.ResourceException;
 import jakarta.resource.spi.LocalTransaction;
-
 import org.openmdx.base.accessor.rest.DataObjectManager_1;
 import org.openmdx.base.resource.spi.LocalTransactions;
 import org.openmdx.base.transaction.LocalUserTransaction;
@@ -108,7 +107,7 @@ class ResourceLocaUserTransactionAdapter implements LocalUserTransaction {
     /* (non-Javadoc)
      * @see org.openmdx.base.accessor.rest.spi.UserTransaction_2_0#setRollbackOnly()
      */
-//  @Override
+    @Override
     public void setRollbackOnly(
     ) throws ResourceException {
         throw new NotSupportedException(
@@ -119,7 +118,7 @@ class ResourceLocaUserTransactionAdapter implements LocalUserTransaction {
     /* (non-Javadoc)
      * @see org.openmdx.base.accessor.rest.spi.UserTransaction_2_0#isRollbackOnly()
      */
-//  @Override
+    @Override
     public boolean isRollbackOnly(
     ) throws ResourceException {
         throw new NotSupportedException(

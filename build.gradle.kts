@@ -48,7 +48,7 @@ plugins {
 
 val projectFlavour = providers.gradleProperty("flavour").getOrElse("4")
 val projectSpecificationVersion = "19"
-val projectMaintenanceVersion = "3-20250206"
+val projectMaintenanceVersion = "3"
 val runtimeCompatibility = if (projectFlavour < "4") JavaVersion.VERSION_1_8 else JavaVersion.VERSION_21
 val classicChronoTypes = projectFlavour == "2" || projectFlavour == "4"
 
@@ -78,15 +78,11 @@ allprojects {
     tasks.withType<JavaCompile> {
         sourceCompatibility = runtimeCompatibility.majorVersion
         targetCompatibility = runtimeCompatibility.majorVersion
-        options.release.set(runtimeCompatibility.majorVersion.toInt())
-        options.annotationProcessorGeneratedSourcesDirectory = layout.buildDirectory.dir("generated/sources/annotationProcessor/java/main").get().getAsFile()
-        if(runtimeCompatibility.isJava8()) {
-        	options.compilerArgs.add("-Xlint:-options")
-        }
-        if(classicChronoTypes) {
-        	options.compilerArgs.add("-ACLASSIC_CHRONO_TYPES")
-        }
+        options.release = runtimeCompatibility.majorVersion.toInt()
+        options.generatedSourceOutputDirectory = layout.buildDirectory.dir("generated/sources/annotationProcessor/java/main").get().asFile
         options.annotationProcessorPath = configurations.annotationProcessor.get()
+        if(runtimeCompatibility.isJava8) options.compilerArgs.add("-Xlint:-options")
+        if(classicChronoTypes) options.compilerArgs.add("-ACLASSIC_CHRONO_TYPES")
     }
-
+    
 }
