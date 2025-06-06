@@ -117,10 +117,8 @@ public interface ConnectionFactory extends java.io.Serializable {
    *          <LI> Security related error; example: invalid user
    *          <LI> Failure to allocate system resources
    *         </UL>                        
-   *  @see     javax.resource.cci.ConnectionSpec
-  **/
-  public 
-  Connection getConnection(ConnectionSpec properties) 
+   */
+  Connection getConnection(ConnectionSpec properties)
                        throws ResourceException;
 
   /** Gets a RecordFactory instance. The RecordFactory is used for
@@ -130,8 +128,7 @@ public interface ConnectionFactory extends java.io.Serializable {
    *
    *  @throws ResourceException     Failed to create a RecordFactory
    *  @throws NotSupportedException Operation not supported
-  **/
-  public
+   */
   RecordFactory getRecordFactory() throws ResourceException;
 
   /** Gets metadata for the Resource Adapter. Note that the metadata
@@ -142,8 +139,7 @@ public interface ConnectionFactory extends java.io.Serializable {
    *  @return  ResourceAdapterMetaData instance
    *  @throws   ResourceException Failed to get metadata information 
    *                              about the resource adapter
-  **/
-  public
+   */
   ResourceAdapterMetaData getMetaData() throws ResourceException;
 
 }

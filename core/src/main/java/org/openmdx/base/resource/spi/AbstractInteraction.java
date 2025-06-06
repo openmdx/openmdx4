@@ -206,10 +206,8 @@ public abstract class AbstractInteraction<C extends Connection> implements Inter
 		}
         this.warnings = warning;
     }
-    
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#clearWarnings()
-     */
+
+    @Override
     public final void clearWarnings(
     ) throws ResourceException {
         this.warnings = null;
@@ -218,9 +216,6 @@ public abstract class AbstractInteraction<C extends Connection> implements Inter
         }
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#close()
-     */
     @Override
     public void close(
     ) throws ResourceException {
@@ -231,9 +226,6 @@ public abstract class AbstractInteraction<C extends Connection> implements Inter
         this.closed = true;
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record, javax.resource.cci.Record)
-     */
     @Override
     public boolean execute(
         InteractionSpec ispec, 
@@ -254,9 +246,6 @@ public abstract class AbstractInteraction<C extends Connection> implements Inter
        );
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record)
-     */
     @Override
     public Record execute(
         InteractionSpec ispec, 
@@ -276,19 +265,13 @@ public abstract class AbstractInteraction<C extends Connection> implements Inter
        );
     }
 
-    
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#getConnection()
-     */
+
     @Override
     public final C getConnection(
     ) {
         return this.connection;
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#getWarnings()
-     */
     @Override
     public final ResourceWarning getWarnings(
     ) throws ResourceException {

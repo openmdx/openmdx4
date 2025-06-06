@@ -83,10 +83,6 @@ public class JTALocalUserTransactionAdapter implements LocalUserTransaction {
      */
     private final UserTransaction delegate;
 
-    /**
-     * @throws ResourceException
-     * @see javax.resource.spi.LocalTransaction#begin()
-     */
     @Override
     public void begin(
     ) throws ResourceException {
@@ -105,10 +101,6 @@ public class JTALocalUserTransactionAdapter implements LocalUserTransaction {
         }
     }
 
-    /**
-     * @throws ResourceException
-     * @see javax.resource.spi.LocalTransaction#commit()
-     */
     @Override
     public void commit(
     ) throws ResourceException {
@@ -147,10 +139,6 @@ public class JTALocalUserTransactionAdapter implements LocalUserTransaction {
         }
     }
 
-    /**
-     * @throws ResourceException
-     * @see javax.resource.spi.LocalTransaction#rollback()
-     */
     @Override
     public void rollback(
     ) throws ResourceException {

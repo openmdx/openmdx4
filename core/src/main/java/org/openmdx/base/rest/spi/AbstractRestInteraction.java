@@ -331,9 +331,6 @@ public class AbstractRestInteraction extends AbstractInteraction<RestConnection>
         );
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record, javax.resource.cci.Record)
-     */
     @Override
     public boolean execute(
         InteractionSpec ispec,

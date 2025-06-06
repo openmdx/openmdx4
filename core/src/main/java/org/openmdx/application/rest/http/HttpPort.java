@@ -229,9 +229,6 @@ public class HttpPort implements HttpContext, Port<RestConnection> {
         return this.readTimeout;
     }
 
-    /* (non-Javadoc)
-     * @see org.openmdx.base.resource.spi.Port#getInteraction(javax.resource.cci.Connection)
-     */
     @Override
     public Interaction getInteraction(
     	RestConnection connection

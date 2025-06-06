@@ -54,7 +54,6 @@ import java.io.ObjectOutput;
 import jakarta.resource.cci.MappedRecord;
 import jakarta.resource.cci.Record;
 
-
 import org.openmdx.base.naming.Path;
 import org.openmdx.kernel.exception.BasicException;
 import org.openmdx.kernel.exception.Throwables;
@@ -164,9 +163,6 @@ public class MessageRecord
         this.resourceIdentifier = destination;
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Record#getRecordName()
-     */
     @Override
     public String getRecordName() {
         return NAME;

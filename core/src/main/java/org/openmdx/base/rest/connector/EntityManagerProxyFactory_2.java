@@ -319,7 +319,7 @@ public class EntityManagerProxyFactory_2 extends AbstractPersistenceManagerFacto
      * 
      * @return a new {@code Port} for the given connection factory
      * 
-     * @throws ServiceException
+     * @throws ServiceException in case of failure
      */
     @SuppressWarnings("unchecked")
 	protected Port<RestConnection> newPort(
@@ -327,10 +327,8 @@ public class EntityManagerProxyFactory_2 extends AbstractPersistenceManagerFacto
     ) throws ServiceException{
         if(connectionFactory instanceof ConnectionFactory) {
             return new Port<RestConnection>(){
-                
-                /* (non-Javadoc)
-                 * @see org.openmdx.base.resource.spi.Port#getInteraction(javax.resource.cci.Connection)
-                 */
+
+                @Override
                 public Interaction getInteraction(
                     RestConnection connection
                 ) throws ResourceException {

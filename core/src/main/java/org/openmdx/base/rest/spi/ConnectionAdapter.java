@@ -187,10 +187,7 @@ public class ConnectionAdapter extends AbstractConnection {
         }
         return this.interaction;
     }
-    
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#createInteraction()
-     */
+
     @Override
     public Interaction createInteraction(
     ) throws ResourceException {
@@ -198,10 +195,7 @@ public class ConnectionAdapter extends AbstractConnection {
         return new InteractionAdapter(this.getDelegate());
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#getLocalTransaction()
-     */
-	@Override
+    @Override
     public LocalTransaction getLocalTransaction(
     ) throws ResourceException {
         return this.transactionProxy;
@@ -221,10 +215,8 @@ public class ConnectionAdapter extends AbstractConnection {
          * The current transaction object
          */
         private MappedRecord currentTransaction = null;
-        
-        /* (non-Javadoc)
-         * @see javax.resource.cci.LocalTransaction#begin()
-         */
+
+        @Override
         public void begin(
         ) throws ResourceException {
             if(this.currentTransaction != null) {
@@ -241,9 +233,7 @@ public class ConnectionAdapter extends AbstractConnection {
             ).get(0);
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.cci.LocalTransaction#commit()
-         */
+        @Override
         public void commit(
         ) throws ResourceException {
             if(this.currentTransaction == null) {
@@ -262,9 +252,7 @@ public class ConnectionAdapter extends AbstractConnection {
             }
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.cci.LocalTransaction#rollback()
-         */
+        @Override
         public void rollback(
         ) throws ResourceException {
             if(this.currentTransaction == null) {
@@ -292,27 +280,18 @@ public class ConnectionAdapter extends AbstractConnection {
      */
     static class NoTransactionAdapter implements LocalTransaction {
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#begin()
-         */
         @Override
         public void begin(
         ) throws ResourceException {
             // nothing to do
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#commit()
-         */
         @Override
         public void commit(
         ) throws ResourceException {
             // nothing to do
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#rollback()
-         */
         @Override
         public void rollback(
         ) throws ResourceException {
@@ -348,9 +327,6 @@ public class ConnectionAdapter extends AbstractConnection {
          */
         private final Interaction delegate;
         
-        /* (non-Javadoc)
-         * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record)
-         */
         private <T> T execute(
             Class<T> returnType,
             InteractionSpec ispec, 
@@ -371,10 +347,7 @@ public class ConnectionAdapter extends AbstractConnection {
                 );
             }
         }
-        
-        /* (non-Javadoc)
-         * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record)
-         */
+
         @Override
         public Record execute(
             InteractionSpec ispec, 

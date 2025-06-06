@@ -260,11 +260,6 @@ public class InboundConnection_2 extends AbstractConnection {
             );
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.resource.cci.Connection#close()
-     */
     @Override
     public void close()
         throws ResourceException {
@@ -284,11 +279,7 @@ public class InboundConnection_2 extends AbstractConnection {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.resource.cci.Connection#getLocalTransaction()
-     */
+    @Override
     public LocalTransaction getLocalTransaction()
         throws ResourceException {
         assertResourceLocalTransaction();
@@ -316,11 +307,7 @@ public class InboundConnection_2 extends AbstractConnection {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.resource.cci.Connection#createInteraction()
-     */
+    @Override
     public Interaction createInteraction()
         throws ResourceException {
         return new InboundInteraction(this);
@@ -350,11 +337,6 @@ public class InboundConnection_2 extends AbstractConnection {
      */
     class TransitionalTransactionAdapter implements LocalTransaction {
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.resource.cci.LocalTransaction#begin()
-         */
         @Override
         public void begin()
             throws ResourceException {
@@ -368,11 +350,6 @@ public class InboundConnection_2 extends AbstractConnection {
             }
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.resource.cci.LocalTransaction#commit()
-         */
         @Override
         public void commit()
             throws ResourceException {
@@ -383,11 +360,6 @@ public class InboundConnection_2 extends AbstractConnection {
             }
         }
 
-        /*
-         * (non-Javadoc)
-         * 
-         * @see javax.resource.cci.LocalTransaction#rollback()
-         */
         @Override
         public void rollback()
             throws ResourceException {

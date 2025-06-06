@@ -97,9 +97,6 @@ public abstract class AbstractConnection implements RestConnection {
     // Implements Connection
     // ------------------------------------------------------------------------
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#getMetaData()
-     */
     @Override
     public final RestConnectionMetaData getMetaData() {
         return this.metaData;
@@ -113,9 +110,6 @@ public abstract class AbstractConnection implements RestConnection {
         return this.connectionFactory;
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#getResultSetInfo()
-     */
     @Override
     public final ResultSetInfo getResultSetInfo() throws ResourceException {
         throw ResourceExceptions.initHolder(
@@ -139,9 +133,6 @@ public abstract class AbstractConnection implements RestConnection {
                 }
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#close()
-     */
     @Override
     public void close() throws ResourceException {
         this.assertOpen();

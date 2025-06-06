@@ -104,8 +104,6 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
 
 	/**
      * Constructor 
-     *
-     * @throws NoSuchAlgorithmException 
      */
     ManagedKeyStoreConnection(
         ManagedConnectionFactory factory,
@@ -169,8 +167,6 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
 	 * Retrieve the signature
 	 * 
      * @return the initialized signature
-     * 
-	 * @throws GeneralSecurityException
      */
     Signature getSignature(
     	ConnectionType type
@@ -209,13 +205,8 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
 
 	/**
      * Validate a certification path
-     * 
-     * @param certificationPath
-     * 
+     *
      * @return the certification validation result
-     * 
-     * @throws InvalidAlgorithmParameterException 
-     * @throws CertPathValidatorException 
      */
     CertPathValidatorResult validate(
     	CertPath certificationPath
@@ -223,9 +214,6 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
     	return this.validator.validate(certificationPath, this.parameters);
     }
 
-	/* (non-Javadoc)
-     * @see javax.resource.spi.ManagedConnection#destroy()
-     */
     @Override
     public void destroy(
     ) throws ResourceException {
@@ -240,7 +228,7 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
      */
     @Override
     protected Object newConnection(Subject subject, ConnectionRequestInfo connectionRequestInfo
-    ) throws ResourceException {
+    ) {
     	switch(this.connectionType) {
 	    	case CERTIFICATE_PROVIDER: 
 	    		return new CertificateConnection();
@@ -259,7 +247,7 @@ class ManagedKeyStoreConnection extends AbstractManagedConnection<ManagedConnect
         Object credential,
         ConnectionRequestInfo connectionRequestInfo
     ) {
-        // TODO Auto-generated method stub
+
         return false;
     }
     

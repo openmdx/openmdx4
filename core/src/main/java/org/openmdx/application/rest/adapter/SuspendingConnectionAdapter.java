@@ -105,9 +105,6 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
         return new LocalTransactionManagerAdapter();
     }
 
-    /* (non-Javadoc)
-     * @see javax.resource.cci.Connection#createInteraction()
-     */
     @Override
     public Interaction createInteraction(
     ) throws ResourceException {
@@ -218,9 +215,6 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
             return this.userTransaction;
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#begin()
-         */
         @Override
         public void begin(
         ) throws ResourceException {
@@ -249,9 +243,6 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
             }
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#commit()
-         */
         @Override
         public void commit(
         ) throws ResourceException {
@@ -306,9 +297,6 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
             }
         }
 
-        /* (non-Javadoc)
-         * @see javax.resource.spi.LocalTransaction#rollback()
-         */
         @Override
         public void rollback(
         ) throws ResourceException {
@@ -409,9 +397,6 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
          */
         private final Interaction delegate;
         
-        /* (non-Javadoc)
-         * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record)
-         */
         private <T> T execute(
             Class<T> returnType,
             InteractionSpec ispec,
@@ -468,10 +453,7 @@ class SuspendingConnectionAdapter extends ConnectionAdapter {
                 getLocalTransactionManager().resumeSuspendedTransaction(suspendedTransaction);
             }
         }
-        
-        /* (non-Javadoc)
-         * @see javax.resource.cci.Interaction#execute(javax.resource.cci.InteractionSpec, javax.resource.cci.Record)
-         */
+
         @Override
         public Record execute(
             InteractionSpec ispec, 
