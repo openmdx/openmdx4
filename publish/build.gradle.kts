@@ -69,19 +69,8 @@ publishing {
     repositories {
         maven {
         	// Publish to local
-        	/**/
             val releasesRepoUrl = uri(layout.buildDirectory.dir("repos/releases"))
             val snapshotsRepoUrl = uri(layout.buildDirectory.dir("repos/snapshots"))
-            /**/
-            // Publish to OSSRH
-            /*
-            credentials {
-                username = project.property("ossrhUsername").toString()
-                password = project.property("ossrhPassword").toString()
-            }
-            val releasesRepoUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2")
-            val snapshotsRepoUrl = uri("https://oss.sonatype.org/content/repositories/snapshots")
-            */
             // Url
             url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
         }
@@ -539,7 +528,6 @@ publishing {
 }
 
 signing {
-    /*
     sign(publishing.publications["openmdxSystem"])
     sign(publishing.publications["openmdxBase"])
     sign(publishing.publications["openmdxBaseModels"])
@@ -554,5 +542,4 @@ signing {
     sign(publishing.publications["openmdxPortalModels"])
     sign(publishing.publications["openmdxInspector"])
     sign(publishing.publications["openmdxCatalina"])
-    */
 }
