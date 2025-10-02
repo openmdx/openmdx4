@@ -47,6 +47,8 @@ package org.openmdx.security.auth.client.spi;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+import org.openmdx.kernel.exception.Throwables;
+
 /**
  * Resource Bundles
  */
@@ -61,9 +63,7 @@ public class ResourceBundles {
 
 	/**
 	 * Lenient resource bundle retrieval
-	 * 
-	 * @param baseName
-	 * 
+	 *
 	 * @return the corresponding ResourceBundle; or {@code null}
 	 * if it is missing
 	 */
@@ -74,16 +74,14 @@ public class ResourceBundles {
 			return ResourceBundle.getBundle(baseName);
 		} 
 		catch (MissingResourceException exception) {
-			System.err.println(exception.toString());
+			Throwables.log(exception);
 			return null;
 		}
 	}
 		
 	/**
 	 * Lenient resource bundle retrieval
-	 * 
-	 * @param baseName
-	 * 
+	 *
 	 * @return the corresponding ResourceBundle; or {@code null}
 	 * if it is missing
 	 */

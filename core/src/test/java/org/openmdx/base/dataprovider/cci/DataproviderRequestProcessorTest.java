@@ -44,8 +44,8 @@
  */
 package org.openmdx.base.dataprovider.cci;
 
-import jakarta.resource.ResourceException;
-import jakarta.resource.cci.MappedRecord;
+import #if JAVA_8 javax.resource.ResourceException #else jakarta.resource.ResourceException #endif;
+import #if JAVA_8 javax.resource.cci.MappedRecord #else jakarta.resource.cci.MappedRecord #endif;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
